@@ -1,6 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
-
-project(roboy_system_notifications)
+PROJECT(roboy_system_notification C CXX)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
 
@@ -11,32 +9,18 @@ SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 # Dependencies
 #==============================================================================
 
-find_package(catkin REQUIRED COMPONENTS roscpp controller_interface hardware_interface pluginlib
-        roboy_communication_middleware ecl_geometry common_utilities)
-catkin_package(CATKIN_DEPENDS message_runtime roboy_communication_middleware common_utilities INCLUDE_DIRS include)
+# ros
+find_package(catkin REQUIRED COMPONENTS roboy_communication_control roscpp std_msgs)
+catkin_package( CATKIN_DEPENDS message_runtime roboy_communication_control INCLUDE_DIRS include)
+include_directories(${catkin_INCLUDE_DIRS} )
 
-include_directories(
-        include
-        ${catkin_INCLUDE_DIRS}
+INCLUDE_DIRECTORIES(
+        include/
 )
 
 #==============================================================================
 # Application
 #==============================================================================
-
-add_executable(roboy_system_notifications src/main.cpp src/roboySystemNotification.cpp)
-add_dependencies(roboy_communication_control_gencpp)
-target_link_libraries(roboy_system_notifications ${catkin_LIBRARIES})
-
-#==============================================================================
-# Installation
-#==============================================================================
-install(TARGETS
-        roboy_system_notifications
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-        )
-
-install(FILES
-        package.xml
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-        )
+add_executable(roboy_system_notification src/main.cpp src/roboySystemNotification.cpp)
+target_link_libraries(roboy_system_notification ${catkin_LIBRARIES})
+add_dependencies(roboy_system_notification roboy_communication_control_gencpp)
