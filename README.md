@@ -30,7 +30,7 @@ source /opt/ros/kinetic/setup.bash
 
 ### 4. Build the package
 ```bash
-cd YOUR_WORKSPACE_DIR/src
+cd YOUR_WORKSPACE_DIR
 catkin_make
 ```
 
