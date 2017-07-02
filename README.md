@@ -18,7 +18,7 @@ You can find more information about the ROS core here: [http://wiki.ros.org/rosc
 ### 1. IF NOT STILL DONE: Add dependency roboy_communication to workspace
 ```bash
 cd YOUR_WORKSPACE_DIR/src
-git clone -b feature/error-detection-msgs https://github.com/Roboy/roboy_communication
+git clone -b feature/error-detection-msgs https://github.com/CapChrisCap/roboy_communication
 ```
 
 ### 2. Add this repository to your workspace
