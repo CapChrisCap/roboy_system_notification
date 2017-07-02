@@ -4,6 +4,17 @@ This module helps you to send system messages in a very easy way.
 
 ## Installation
 
+### 0. Ensure that ROS master is running
+
+For this package, you need a ROS master running. Therefore, you have to run it before processing the next steps. 
+If you run your ROS core on the same host, you can run it with: 
+
+```bash
+roscore &
+```
+
+You can find more information about the ROS core here: [http://wiki.ros.org/roscore](http://wiki.ros.org/roscore)
+
 ### 1. IF NOT STILL DONE: Add dependency roboy_communication to workspace
 ```bash
 cd YOUR_WORKSPACE_DIR/src
