@@ -41,7 +41,7 @@ source /opt/ros/kinetic/setup.bash
 
 ### 4. Build the package
 ```bash
-cd YOUR_WORKSPACE_DIR
+cd YOUR_WORKSPACE_DIR/src
 catkin_make
 ```
 
@@ -56,7 +56,7 @@ Now, you should be able to see the publishers in your `rostopic list` output:
 ```
 /roboy/system_notification/debug
 /roboy/system_notification/error
-/roboy/system_notification/log
+/roboy/system_notification/info
 /roboy/system_notification/warning
 ```
 
