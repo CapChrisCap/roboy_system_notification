@@ -139,7 +139,6 @@ Publishes a debug message over the channel `/roboy/system_notification/debug` wi
 
 ```cpp
 #include "roboy_system_notification/roboySystemNotification.hpp"
-#include <iostream>
 
 int main(int argc, char* argv[])
 {

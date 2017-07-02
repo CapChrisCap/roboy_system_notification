@@ -1,5 +1,4 @@
 #include "roboy_system_notification/roboySystemNotification.hpp"
-#include <iostream>
 
 int main(int argc, char* argv[])
 {
