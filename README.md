@@ -56,6 +56,7 @@ Now, you should be able to see the publishers in your `rostopic list` output:
 ```
 /roboy/system_notification/debug
 /roboy/system_notification/error
+/roboy/system_notification/danger
 /roboy/system_notification/info
 /roboy/system_notification/warning
 ```
@@ -105,6 +106,14 @@ to mark it as a build and run dependency. After that, it will look similar to th
 ### 2. Use the `RoboySystemNotification` class within your project
 
 #### API `RoboySystemNotification`
+
+##### void sendDangerMessage(uint32_t id, uint32_t objectId = 0)
+
+Publishes a danger message over the channel `/roboy/system_notification/danger` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
+
+ - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
+
 
 ##### void sendErrorMessage(uint32_t id, uint32_t objectId = 0)
 

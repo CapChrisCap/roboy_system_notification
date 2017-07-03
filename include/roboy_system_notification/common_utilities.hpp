@@ -1,6 +1,7 @@
 #include <string>
 
-enum NotificationLevel {  UNDEFINED_LEVEL = 0,
+enum NotificationLevel {
+    UNDEFINED_LEVEL = 0,
     DEBUG_LEVEL,
     INFO_LEVEL,
     WARNING_LEVEL,
