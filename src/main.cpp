@@ -7,7 +7,9 @@ int main(int argc, char* argv[])
         char **argv = NULL;
         ros::init(argc, argv, "roboySystemNotification");
     }
-    RoboySystemNotification notifier;
+
+    ros::NodeHandlePtr nh = ros::NodeHandlePtr(new ros::NodeHandle);
+    RoboySystemNotification notifier(nh);
 
     // wait to prevent closing topic again
     while (ros::ok()) {

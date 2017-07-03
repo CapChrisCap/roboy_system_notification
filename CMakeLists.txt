@@ -21,6 +21,10 @@ INCLUDE_DIRECTORIES(
 #==============================================================================
 # Application
 #==============================================================================
-add_executable(roboy_system_notification src/main.cpp src/roboySystemNotification.cpp)
-target_link_libraries(roboy_system_notification ${catkin_LIBRARIES})
+add_library(roboy_system_notification src/roboySystemNotification.cpp)
 add_dependencies(roboy_system_notification roboy_communication_control_gencpp)
+target_link_libraries(roboy_system_notification ${catkin_LIBRARIES})
+
+add_executable(roboy_system_notification_test src/main.cpp )
+add_dependencies(roboy_system_notification_test roboy_communication_control_gencpp)
+target_link_libraries(roboy_system_notification_test ${catkin_LIBRARIES} roboy_system_notification)
