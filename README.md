@@ -107,42 +107,46 @@ to mark it as a build and run dependency. After that, it will look similar to th
 
 #### API `RoboySystemNotification`
 
-##### void sendDangerMessage(uint32_t id, uint32_t objectId = 0)
+##### void sendDangerMessage(uint32_t code, std::string message, uint32_t objectId = 0)
 
 Publishes a danger message over the channel `/roboy/system_notification/danger` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
 
 
-##### void sendErrorMessage(uint32_t id, uint32_t objectId = 0)
+##### void sendErrorMessage(uint32_t code, std::string message, uint32_t objectId = 0)
 
 Publishes a error message over the channel `/roboy/system_notification/error` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a uniform message identifier code
+ - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
 
-##### void sendWarningMessage(uint32_t id, uint32_t objectId = 0)
+##### void sendWarningMessage(uint32_t code, std::string message, uint32_t objectId = 0)
 
 Publishes a warning message over the channel `/roboy/system_notification/warning` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a uniform message identifier code
+ - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
 
-##### void sendInfoMessage(uint32_t id, uint32_t objectId = 0)
+##### void sendInfoMessage(uint32_t code, std::string message, uint32_t objectId = 0)
 
 Publishes a info message over the channel `/roboy/system_notification/info` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a uniform message identifier code
+ - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
 
-##### void sendDebugMessage(uint32_t id, uint32_t objectId = 0)
+##### void sendDebugMessage(uint32_t code, std::string message, uint32_t objectId = 0)
 
 Publishes a debug message over the channel `/roboy/system_notification/debug` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `id` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a uniform message identifier code
+ - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
-
 
 #### Example: 
 
@@ -156,15 +160,17 @@ int main(int argc, char* argv[])
         char **argv = NULL;
         ros::init(argc, argv, "roboySystemNotification");
     }
-    RoboySystemNotification notifier;
+
+    ros::NodeHandlePtr nh = ros::NodeHandlePtr(new ros::NodeHandle);
+    RoboySystemNotification notifier(nh);
 
     // wait to prevent closing topic again
     while (ros::ok()) {
         // send exemplary messages
-        notifier.sendInfoMessage(1, 2); // send info message with id=1 and objectId=2
-        notifier.sendDebugMessage(2); // send debug message with id=2 and objectId=Default(0)
-        notifier.sendWarningMessage(3, 2); // send warning message with id=3 and objectId=2
-        notifier.sendErrorMessage(4, 3); // send error message with id=3 and objectId=3
+        notifier.sendInfoMessage(5, "This is a dummy info message", 2); // send info message with code=5 and objectId=2
+        notifier.sendDebugMessage(6, "This is a dummy debug message without an objectId"); // send debug message with code=6 and objectId=Default(0)
+        notifier.sendWarningMessage(7, "This is a dummy warning message"); // send warning message with code=7 and objectId=2
+        notifier.sendErrorMessage(8, "This is a dummy error message"); // send error message with code=8 and objectId=3
         
         ROS_INFO_THROTTLE(5, "Roboy System Notification is alive!");
     }
