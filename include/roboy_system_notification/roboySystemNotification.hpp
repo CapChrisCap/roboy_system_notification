@@ -29,41 +29,46 @@ public:
      * Send a message over the system with the level "DEBUG"
      * @param code message code, which represents the meaning of the message
      * @param message message text
-     * @param objectId optional object id, is often used to assign an object, like a motor, to the message
+     * @param extra extra message text, which should help the developer to understand or fix the notifications reason
+     * @param object optional object id, is often used to assign an object, like a motor, to the message
      */
-    void sendDebugMessage(uint32_t code, std::string message, uint32_t objectId = 0);
+    void sendDebugMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
 
     /**
      * Send a message over the system with the level "INFO"
      * @param code message code, which represents the meaning of the message
      * @param message message text
-     * @param objectId optional object id, is often used to assign an object, like a motor, to the message
+     * @param extra extra message text, which should help the developer to understand or fix the notifications reason
+     * @param object optional object id, is often used to assign an object, like a motor, to the message
      */
-    void sendInfoMessage(uint32_t code, std::string message, uint32_t objectId = 0);
+    void sendInfoMessage(uint32_t code, std::string message, std::string extra, std::string object = "");
 
     /**
      * Send a message over the system with the level "WARNING"
      * @param code message code, which represents the meaning of the message
      * @param message message text
-     * @param objectId optional object id, is often used to assign an object, like a motor, to the message
+     * @param extra extra message text, which should help the developer to understand or fix the notifications reason
+     * @param object optional object id, is often used to assign an object, like a motor, to the message
      */
-    void sendWarningMessage(uint32_t code, std::string message, uint32_t objectId = 0);
+    void sendWarningMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
 
     /**
      * Send a message over the system with the level "ERROR"
      * @param code message code, which represents the meaning of the message
      * @param message message text
-     * @param objectId optional object id, is often used to assign an object, like a motor, to the message
+     * @param extra extra message text, which should help the developer to understand or fix the notifications reason
+     * @param object optional object id, is often used to assign an object, like a motor, to the message
      */
-    void sendErrorMessage(uint32_t code, std::string message, uint32_t objectId = 0);
+    void sendErrorMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
 
     /**
      * Send a message over the system with the level "DANGER"
      * @param code message code, which represents the meaning of the message
      * @param message message text
-     * @param objectId optional object id, is often used to assign an object, like a motor, to the message
+     * @param extra extra message text, which should help the developer to understand or fix the notifications reason
+     * @param object optional object id, is often used to assign an object, like a motor, to the message
      */
-    void sendDangerMessage(uint32_t code, std::string message, uint32_t objectId = 0);
+    void sendDangerMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
 
 private:
     ros::Publisher info_notification_pub, warning_notification_pub, error_notification_pub, danger_notification_pub, debug_notification_pub;
