@@ -20,7 +20,7 @@ void RoboySystemNotification::setNodeHandler(ros::NodeHandlePtr nh) {
     info_notification_pub = nh->advertise<roboy_communication_control::InfoNotification>(topicAddresses[INFO_LEVEL], 1000);
 }
 
-void RoboySystemNotification::sendInfoMessage(uint32_t code, std::string message, std::string extra, std::string object) {
+void RoboySystemNotification::sendInfoMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
     ROS_INFO_THROTTLE(5, "Sent info message!");
 
@@ -29,11 +29,12 @@ void RoboySystemNotification::sendInfoMessage(uint32_t code, std::string message
     msg.msg = message;
     msg.extra = extra;
     msg.object = object;
+    msg.validityDuration = durationOfValidity;
 
     info_notification_pub.publish(msg);
 }
 
-void RoboySystemNotification::sendDebugMessage(uint32_t code, std::string message, std::string extra, std::string object) {
+void RoboySystemNotification::sendDebugMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
     ROS_INFO_THROTTLE(5, "Sent debug message!");
 
@@ -42,11 +43,12 @@ void RoboySystemNotification::sendDebugMessage(uint32_t code, std::string messag
     msg.msg = message;
     msg.extra = extra;
     msg.object = object;
+    msg.validityDuration = durationOfValidity;
 
     debug_notification_pub.publish(msg);
 }
 
-void RoboySystemNotification::sendWarningMessage(uint32_t code, std::string message, std::string extra, std::string object) {
+void RoboySystemNotification::sendWarningMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
     ROS_INFO_THROTTLE(5, "Sent warning message!");
 
@@ -55,11 +57,12 @@ void RoboySystemNotification::sendWarningMessage(uint32_t code, std::string mess
     msg.msg = message;
     msg.extra = extra;
     msg.object = object;
+    msg.validityDuration = durationOfValidity;
 
     warning_notification_pub.publish(msg);
 }
 
-void RoboySystemNotification::sendErrorMessage(uint32_t code, std::string message, std::string extra, std::string object) {
+void RoboySystemNotification::sendErrorMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
     ROS_INFO_THROTTLE(5, "Sent error message!");
 
@@ -68,11 +71,12 @@ void RoboySystemNotification::sendErrorMessage(uint32_t code, std::string messag
     msg.msg = message;
     msg.extra = extra;
     msg.object = object;
+    msg.validityDuration = durationOfValidity;
 
     error_notification_pub.publish(msg);
 }
 
-void RoboySystemNotification::sendDangerMessage(uint32_t code, std::string message, std::string extra, std::string object) {
+void RoboySystemNotification::sendDangerMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
     ROS_INFO_THROTTLE(5, "Sent danger message!");
 
@@ -81,6 +85,7 @@ void RoboySystemNotification::sendDangerMessage(uint32_t code, std::string messa
     msg.msg = message;
     msg.extra = extra;
     msg.object = object;
+    msg.validityDuration = durationOfValidity;
 
     danger_notification_pub.publish(msg);
 }

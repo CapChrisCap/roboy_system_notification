@@ -31,8 +31,9 @@ public:
      * @param message message text
      * @param extra extra message text, which should help the developer to understand or fix the notifications reason
      * @param object optional object id, is often used to assign an object, like a motor, to the message
+     * @param durationOfValidity interval duration in which the message is valid after its content expires
      */
-    void sendDebugMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
+    void sendDebugMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "", uint32_t durationOfValidity = 50);
 
     /**
      * Send a message over the system with the level "INFO"
@@ -40,8 +41,9 @@ public:
      * @param message message text
      * @param extra extra message text, which should help the developer to understand or fix the notifications reason
      * @param object optional object id, is often used to assign an object, like a motor, to the message
+     * @param durationOfValidity interval duration in which the message is valid after its content expires
      */
-    void sendInfoMessage(uint32_t code, std::string message, std::string extra, std::string object = "");
+    void sendInfoMessage(uint32_t code, std::string message, std::string extra, std::string object = "", uint32_t durationOfValidity = 50);
 
     /**
      * Send a message over the system with the level "WARNING"
@@ -49,8 +51,9 @@ public:
      * @param message message text
      * @param extra extra message text, which should help the developer to understand or fix the notifications reason
      * @param object optional object id, is often used to assign an object, like a motor, to the message
+     * @param durationOfValidity interval duration in which the message is valid after its content expires
      */
-    void sendWarningMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
+    void sendWarningMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "", uint32_t durationOfValidity = 50);
 
     /**
      * Send a message over the system with the level "ERROR"
@@ -58,8 +61,9 @@ public:
      * @param message message text
      * @param extra extra message text, which should help the developer to understand or fix the notifications reason
      * @param object optional object id, is often used to assign an object, like a motor, to the message
+     * @param durationOfValidity interval duration in which the message is valid after its content expires
      */
-    void sendErrorMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
+    void sendErrorMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "", uint32_t durationOfValidity = 50);
 
     /**
      * Send a message over the system with the level "DANGER"
@@ -67,8 +71,9 @@ public:
      * @param message message text
      * @param extra extra message text, which should help the developer to understand or fix the notifications reason
      * @param object optional object id, is often used to assign an object, like a motor, to the message
+     * @param durationOfValidity interval duration in which the message is valid after its content expires
      */
-    void sendDangerMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "");
+    void sendDangerMessage(uint32_t code, std::string message, std::string extra = "", std::string object = "", uint32_t durationOfValidity = 50);
 
 private:
     ros::Publisher info_notification_pub, warning_notification_pub, error_notification_pub, danger_notification_pub, debug_notification_pub;
