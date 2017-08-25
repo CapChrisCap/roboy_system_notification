@@ -50,8 +50,6 @@ void RoboySystemNotification::sendDebugMessage(uint32_t code, std::string messag
 
 void RoboySystemNotification::sendWarningMessage(uint32_t code, std::string message, std::string extra, std::string object, uint32_t durationOfValidity) {
     // TODO: check for invalid input
-    ROS_INFO_THROTTLE(5, "Sent warning message!");
-
     roboy_communication_control::WarningNotification msg;
     msg.code = code;
     msg.msg = message;
