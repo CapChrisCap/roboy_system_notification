@@ -18,13 +18,13 @@ You can find more information about the ROS core here: [http://wiki.ros.org/rosc
 ### 1. IF NOT STILL DONE: Add dependency roboy_communication to workspace
 ```bash
 cd YOUR_WORKSPACE_DIR/src
-git clone -b feature/error-detection-msgs https://github.com/CapChrisCap/roboy_communication
+git clone -b feature/error-detection-msgs https://github.com/Roboy/roboy_communication
 ```
 
 ### 2. Add this repository to your workspace
 ```bash
 cd YOUR_WORKSPACE_DIR/src
-git clone https://github.com/CapChrisCap/roboy_system_notification
+git clone https://github.com/Roboy/roboy_system_notification
 ```
 
 ### 3. Source setup files
@@ -111,7 +111,7 @@ to mark it as a build and run dependency. After that, it will look similar to th
 
 Publishes a danger message over the channel `/roboy/system_notification/danger` with the format [roboy_communication_control::SystemNotification](https://github.com/Roboy/roboy_communication/blob/master/roboy_communication_control/msg/SystemNotification.msg). 
 
- - The `code` is a [uniform message identifier](https://github.com/CapChrisCap/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
+ - The `code` is a [uniform message identifier](https://github.com/Roboy/roboy_communication/blob/feature/error-detection-msgs/middleware/include/common_utilities/CommonDefinitions.h#L16)
  - The `message` shows a human readable message for the message code
  - The `objectId` is an extra, optional identifier of an object, which should be assigned to the error message (one use-case would be the motor ID of a robot).
 
